@@ -4,6 +4,7 @@ import com.igc.productapp.entity.ProductEntity;
 import com.igc.productapp.exception.ProductNotFoundException;
 import com.igc.productapp.model.ProductModel;
 import com.igc.productapp.repository.productRepo;
+import com.igc.productapp.util.Constants;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -55,7 +56,7 @@ public class ProductService implements IProductService{
         }
         else
         {
-            throw new ProductNotFoundException("Product is not Found");
+            throw new ProductNotFoundException(Constants.PRODUCT_ID_NOT_FOUND);
         }
     }
 

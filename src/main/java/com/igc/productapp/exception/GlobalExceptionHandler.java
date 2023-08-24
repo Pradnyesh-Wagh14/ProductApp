@@ -1,6 +1,7 @@
 package com.igc.productapp.exception;
 
 import com.igc.productapp.responses.Response;
+import com.igc.productapp.util.Constants;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -22,7 +23,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(ProductNotFoundException.class)
     public ResponseEntity<?> productNotFoundEx(ProductNotFoundException ex) {
 
-        return new ResponseEntity<>(new Response("Product with given ID Not Found", HttpStatus.NOT_FOUND),HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(new Response(Constants.PRODUCT_ID_NOT_FOUND, HttpStatus.NOT_FOUND),HttpStatus.NOT_FOUND);
 
     }
 /*
@@ -33,6 +34,6 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 */
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
-        return new ResponseEntity<>(new Response("Error in Input Data",HttpStatus.BAD_REQUEST,ex.getDetailMessageArguments()),HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(new Response(Constants.USER_INPUT_NOT_VALID,HttpStatus.BAD_REQUEST,ex.getDetailMessageArguments()),HttpStatus.BAD_REQUEST);
     }
 }

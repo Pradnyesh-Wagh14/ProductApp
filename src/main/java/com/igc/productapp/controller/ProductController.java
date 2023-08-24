@@ -6,6 +6,7 @@ import com.igc.productapp.model.ProductModel;
 import com.igc.productapp.responses.Response;
 import com.igc.productapp.service.IProductService;
 import com.igc.productapp.service.ProductService;
+import com.igc.productapp.util.Constants;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,18 +27,18 @@ public class ProductController {
     @GetMapping("/getproducts")
     public ResponseEntity<?> getAllProduct()
     {
-        return new ResponseEntity<>(new Response("Product List",HttpStatus.FOUND,productService.getAllProduct()), HttpStatus.FOUND);
+        return new ResponseEntity<>(new Response(Constants.FOUND_PRODUCT_LIST,HttpStatus.FOUND,productService.getAllProduct()), HttpStatus.FOUND);
     }
 
     @PostMapping("/addproduct")
       public ResponseEntity<?> addAllProduct(@RequestBody @Valid ProductModel productmodel)
       {
-          return new ResponseEntity<>(new Response("Product Added Successsfully",HttpStatus.CREATED,productService.addAllProduct(productmodel)),HttpStatus.CREATED) ;
+          return new ResponseEntity<>(new Response(Constants.PRODUCT_ADDED,HttpStatus.CREATED,productService.addAllProduct(productmodel)),HttpStatus.CREATED) ;
       }
 
       @GetMapping("/getproductbyid/{id}")
     public ResponseEntity<?> getProductById(@PathVariable("id") Integer id) {
-        return new ResponseEntity<>(new Response("Product Found",HttpStatus.FOUND,productService.getProductById(id)),HttpStatus.FOUND);
+        return new ResponseEntity<>(new Response(Constants.PRODUCT_FOUND,HttpStatus.FOUND,productService.getProductById(id)),HttpStatus.FOUND);
     }
 
 }
