@@ -5,6 +5,7 @@ import com.igc.productapp.exception.ProductNotFoundException;
 import com.igc.productapp.model.ProductModel;
 import com.igc.productapp.repository.productRepo;
 import com.igc.productapp.util.Constants;
+import com.igc.productapp.util.Utils;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,6 +38,7 @@ public class ProductService implements IProductService{
     public ProductModel addAllProduct( ProductModel productmodel)
     {
         ProductEntity productEntity = new ProductEntity(productmodel);
+       productEntity.setRegno(Utils.getUUID());
 
         ProductEntity productEntity1 = productRepo.save(productEntity);
 

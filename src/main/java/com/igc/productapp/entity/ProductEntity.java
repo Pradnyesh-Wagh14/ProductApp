@@ -1,6 +1,7 @@
 package com.igc.productapp.entity;
 
 import com.igc.productapp.model.ProductModel;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -19,6 +20,8 @@ public class ProductEntity {
     private String price;
     private String qty;
     private String status;
+
+   private String regno;
     public ProductEntity() {
 
     }
